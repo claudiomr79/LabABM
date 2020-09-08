@@ -55,7 +55,7 @@
                     Fecha de Nacimiento:</td>
                 <td>
                     <asp:DropDownList ID="ddlDiaFechaNacimiento" runat="server">
-                    </asp:DropDownList>
+                         </asp:DropDownList>
                     <asp:DropDownList ID="ddlMesFechaNacimiento" runat="server">
                         <asp:ListItem>Enero</asp:ListItem>
                         <asp:ListItem>Febrero</asp:ListItem>

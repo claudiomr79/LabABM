@@ -11,7 +11,15 @@ namespace LabABM
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (!IsPostBack)
+            {
+                //lblAccion.Text = "Editar Usuario";
+                for (int i = 1; i <= 31; i++)
+                {
+                    ListItem num = new ListItem(i.ToString(),i.ToString());
+                    ddlDiaFechaNacimiento.Items.Add(num);
+                }
+            }
         }
     }
 }

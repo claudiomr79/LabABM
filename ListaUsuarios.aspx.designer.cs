@@ -7,13 +7,11 @@
 // </generado automáticamente>
 //------------------------------------------------------------------------------
 
-namespace LabABM
-{
-
-
-    public partial class ListaUsuarios
-    {
-
+namespace LabABM {
+    
+    
+    public partial class ListaUsuarios {
+        
         /// <summary>
         /// Control form1.
         /// </summary>
@@ -22,7 +20,7 @@ namespace LabABM
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
-
+        
         /// <summary>
         /// Control grdUsuarios.
         /// </summary>
@@ -31,7 +29,7 @@ namespace LabABM
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView grdUsuarios;
-
+        
         /// <summary>
         /// Control lblAccion.
         /// </summary>
@@ -40,7 +38,7 @@ namespace LabABM
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblAccion;
-
+        
         /// <summary>
         /// Control txtApellido.
         /// </summary>
@@ -49,7 +47,7 @@ namespace LabABM
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtApellido;
-
+        
         /// <summary>
         /// Control txtNombre.
         /// </summary>
@@ -58,7 +56,7 @@ namespace LabABM
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtNombre;
-
+        
         /// <summary>
         /// Control rblTipoDocumento.
         /// </summary>
@@ -67,7 +65,7 @@ namespace LabABM
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RadioButtonList rblTipoDocumento;
-
+        
         /// <summary>
         /// Control txtNroDocumento.
         /// </summary>
@@ -76,7 +74,7 @@ namespace LabABM
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtNroDocumento;
-
+        
         /// <summary>
         /// Control ddlDiaFechaNacimiento.
         /// </summary>
@@ -85,7 +83,7 @@ namespace LabABM
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlDiaFechaNacimiento;
-
+        
         /// <summary>
         /// Control ddlMesFechaNacimiento.
         /// </summary>
@@ -94,7 +92,7 @@ namespace LabABM
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlMesFechaNacimiento;
-
+        
         /// <summary>
         /// Control txtAnioFechaNacimiento.
         /// </summary>
@@ -103,7 +101,7 @@ namespace LabABM
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtAnioFechaNacimiento;
-
+        
         /// <summary>
         /// Control txtDirección.
         /// </summary>
@@ -112,7 +110,7 @@ namespace LabABM
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtDirección;
-
+        
         /// <summary>
         /// Control txtTelefono.
         /// </summary>
@@ -121,7 +119,7 @@ namespace LabABM
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtTelefono;
-
+        
         /// <summary>
         /// Control txtEmail.
         /// </summary>
@@ -130,7 +128,7 @@ namespace LabABM
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtEmail;
-
+        
         /// <summary>
         /// Control txtCelular.
         /// </summary>
@@ -139,7 +137,7 @@ namespace LabABM
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtCelular;
-
+        
         /// <summary>
         /// Control txtNombreUsuario.
         /// </summary>
@@ -148,7 +146,7 @@ namespace LabABM
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtNombreUsuario;
-
+        
         /// <summary>
         /// Control txtClave.
         /// </summary>
@@ -157,7 +155,7 @@ namespace LabABM
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtClave;
-
+        
         /// <summary>
         /// Control txtConfirmarClave.
         /// </summary>
@@ -166,7 +164,7 @@ namespace LabABM
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtConfirmarClave;
-
+        
         /// <summary>
         /// Control btnGuardar.
         /// </summary>
@@ -175,7 +173,7 @@ namespace LabABM
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnGuardar;
-
+        
         /// <summary>
         /// Control btnCancelar.
         /// </summary>
