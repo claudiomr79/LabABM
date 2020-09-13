@@ -150,3 +150,5 @@ C:\Users\claud\Desktop\LabABM\obj\Debug\LabABM.csproj.CoreCompileInputs.cache
 C:\Users\claud\Desktop\LabABM\obj\Debug\LabABM.csproj.CopyComplete
 C:\Users\claud\Desktop\LabABM\obj\Debug\LabABM.dll
 C:\Users\claud\Desktop\LabABM\obj\Debug\LabABM.pdb
+C:\Proyectos\Unidades\Unidad06\LabABM\bin\Negocio.dll
+C:\Proyectos\Unidades\Unidad06\LabABM\bin\Negocio.pdb
