@@ -168,7 +168,7 @@ namespace Negocio
             Usuario usuarioActual;
 
             //Creo el comando para ejecutar la sentencia SQL, le asocio la Conexión también
-            SqlCommand cmdGetUsuarios = new SqlCommand("select * from usuarios where Id = @id", this.Conn);
+            SqlCommand cmdGetUsuarios = new SqlCommand("select * from usuarios WHERE id = @id", this.Conn);
 
             //Abro la conexión
             this.Conn.Open();
@@ -193,14 +193,7 @@ namespace Negocio
              return usuarioActual;           
                 
         }
-        private void CargarDatosUsuario(int idUsuario)
-        {
-            // 1 - Obtener los datos del usuario en cuestión
-            // 2 - Cargar en los controles de la tabla los datos del usuario obtenido
-            Usuario usuarioActual;
-            GetUsuario(idUsuario);
-
-        }
+       
 
     }
 }
