@@ -12,9 +12,10 @@ namespace LabABM
     public partial class ListaUsuarios : System.Web.UI.Page
     {
         int idUsuario;
+        bool estadoAlta;
         protected void Page_Load(object sender, EventArgs e)
         {
-            bool estadoAlta = !PaginaEnEstadoEdicion();
+            estadoAlta = !PaginaEnEstadoEdicion();
             if (estadoAlta)
                 {
                     lblAccion.Text = "Agregar Nuevo Usuario";
@@ -22,8 +23,8 @@ namespace LabABM
                 }
                 else
                 {
-                    lblAccion.Text = "Editar Usuario " + idUsuario.ToString();
                     idUsuario = Convert.ToInt32(Request.QueryString["id"]);
+                    lblAccion.Text = "Editar Usuario " + idUsuario.ToString();
                     CargarDatosUsuario(idUsuario);
                 }
                
@@ -76,6 +77,37 @@ namespace LabABM
             txtNombreUsuario.Text = usuarioActual.NombreUsuario;
             txtClave.Text = usuarioActual.Clave;
             txtConfirmarClave.Text = usuarioActual.Clave;
+        }
+
+        protected void btnGuardar_Click(object sender, EventArgs e)
+        {
+            Usuario usr = new Usuario();
+            usr.Apellido = txtApellido.Text;
+            usr.Nombre = txtNombre.Text;
+            usr.Direccion = txtDirección.Text;
+            usr.Telefono = txtTelefono.Text;
+            usr.Email = txtEmail.Text;
+            usr.Celular = txtCelular.Text;
+            usr.NombreUsuario = txtNombreUsuario.Text;
+            usr.Clave = txtClave.Text;
+            usr.TipoDoc = rblTipoDocumento.SelectedIndex;
+            usr.NroDoc =  Convert.ToInt32(txtNroDocumento.Text);
+            usr.FechaNac = ddlDiaFechaNacimiento.SelectedItem + "/" + ddlMesFechaNacimiento.SelectedValue;
+            if (estadoAlta)
+            {
+                ManagerUsuarios manager = new ManagerUsuarios();
+                manager.AgregarUsuario(usr);
+            }
+            else
+            {
+                ManagerUsuarios manager = new ManagerUsuarios();
+                manager.ActualizarUsuario(usr);
+            }
+        }
+
+        protected void btnCancelar_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/ListaUsuarios.aspx");
         }
     }
 }

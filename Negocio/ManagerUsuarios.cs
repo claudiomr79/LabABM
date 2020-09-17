@@ -158,39 +158,43 @@ namespace Negocio
             //Ejecuto la instrucción SQL de INSERT
             cmdInsertarUsuario.ExecuteNonQuery();
             //Cierro la Conexión
-            this.Conn.Open();
+            this.Conn.Close();
         }
         public Usuario GetUsuario(int idUsuario)
         {
             //Basarse en el método GetAll pero obtener únicamente el usuario que viene
             //como párametro
 
-            Usuario usuarioActual;
+            Usuario usuarioActual = null;
 
             //Creo el comando para ejecutar la sentencia SQL, le asocio la Conexión también
-            SqlCommand cmdGetUsuarios = new SqlCommand("select * from usuarios WHERE id = @id", this.Conn);
+            SqlCommand cmdGetUsuarios = new SqlCommand("SELECT * FROM usuarios WHERE id = @id", this.Conn);
 
             //Abro la conexión
             this.Conn.Open();
 
+            cmdGetUsuarios.Parameters.Add("@id", SqlDbType.Int).Value = idUsuario;
             //Ejecuto la consulta, me devuelve un objeto SqlDataReader
             SqlDataReader rdrUsuarios = cmdGetUsuarios.ExecuteReader();
-
-             usuarioActual = new Usuario();
-             usuarioActual.Id = idUsuario;
-             usuarioActual.TipoDoc = (Nullable<int>)rdrUsuarios["tipo_doc"];
-             usuarioActual.NroDoc = (Nullable<int>)rdrUsuarios["nro_doc"];
-             usuarioActual.FechaNac = rdrUsuarios["fecha_nac"].ToString();
-             usuarioActual.Apellido = rdrUsuarios["apellido"].ToString();
-             usuarioActual.Nombre = rdrUsuarios["nombre"].ToString();
-             usuarioActual.Direccion = rdrUsuarios["direccion"].ToString();
-             usuarioActual.Telefono = rdrUsuarios["telefono"].ToString();
-             usuarioActual.Email = rdrUsuarios["email"].ToString();
-             usuarioActual.Celular = rdrUsuarios["celular"].ToString();
-             usuarioActual.NombreUsuario = rdrUsuarios["usuario"].ToString();
-             usuarioActual.Clave = rdrUsuarios["clave"].ToString();              
-             this.Conn.Close();
-             return usuarioActual;           
+            if (rdrUsuarios.Read())
+            {
+                usuarioActual = new Usuario();
+                usuarioActual.Id = idUsuario;
+                usuarioActual.TipoDoc = (Nullable<int>)rdrUsuarios["tipo_doc"];
+                usuarioActual.NroDoc = (Nullable<int>)rdrUsuarios["nro_doc"];
+                usuarioActual.FechaNac = rdrUsuarios["fecha_nac"].ToString();
+                usuarioActual.Apellido = rdrUsuarios["apellido"].ToString();
+                usuarioActual.Nombre = rdrUsuarios["nombre"].ToString();
+                usuarioActual.Direccion = rdrUsuarios["direccion"].ToString();
+                usuarioActual.Telefono = rdrUsuarios["telefono"].ToString();
+                usuarioActual.Email = rdrUsuarios["email"].ToString();
+                usuarioActual.Celular = rdrUsuarios["celular"].ToString();
+                usuarioActual.NombreUsuario = rdrUsuarios["usuario"].ToString();
+                usuarioActual.Clave = rdrUsuarios["clave"].ToString();
+            }
+            rdrUsuarios.Close();
+            this.Conn.Close();
+            return usuarioActual;           
                 
         }
        

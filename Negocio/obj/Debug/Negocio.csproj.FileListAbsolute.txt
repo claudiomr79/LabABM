@@ -10,3 +10,9 @@ C:\Proyectos\Unidades\Unidad06\LabABM\Negocio\obj\Debug\Negocio.csprojAssemblyRe
 C:\Proyectos\Unidades\Unidad06\LabABM\Negocio\obj\Debug\Negocio.csproj.CoreCompileInputs.cache
 C:\Proyectos\Unidades\Unidad06\LabABM\Negocio\obj\Debug\Negocio.dll
 C:\Proyectos\Unidades\Unidad06\LabABM\Negocio\obj\Debug\Negocio.pdb
+C:\Users\claud\Desktop\LabABM\Negocio\obj\Debug\Negocio.csprojAssemblyReference.cache
+C:\Users\claud\Desktop\LabABM\Negocio\obj\Debug\Negocio.csproj.CoreCompileInputs.cache
+C:\Users\claud\Desktop\LabABM\Negocio\obj\Debug\Negocio.dll
+C:\Users\claud\Desktop\LabABM\Negocio\obj\Debug\Negocio.pdb
+C:\Users\claud\Desktop\LabABM\Negocio\bin\Debug\Negocio.dll
+C:\Users\claud\Desktop\LabABM\Negocio\bin\Debug\Negocio.pdb

@@ -127,9 +127,9 @@
             </tr>
             <tr>
                 <td style="width: 150px" align="center">
-                    <asp:Button ID="btnGuardar" runat="server" Text="Guardar" /></td>
+                    <asp:Button ID="btnGuardar" runat="server" Text="Guardar" OnClick="btnGuardar_Click" /></td>
                 <td align="center">
-                    <asp:Button ID="btnCancelar" runat="server" Text="Cancelar" /></td>
+                    <asp:Button ID="btnCancelar" runat="server" Text="Cancelar" OnClick="btnCancelar_Click" /></td>
             </tr>
         </table>
     </form>
