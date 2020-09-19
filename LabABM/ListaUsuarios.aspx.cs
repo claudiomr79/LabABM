@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Microsoft.Ajax.Utilities;
 using Negocio;
 
 
@@ -15,29 +16,32 @@ namespace LabABM
         bool estadoAlta;
         protected void Page_Load(object sender, EventArgs e)
         {
-            estadoAlta = !PaginaEnEstadoEdicion();
-            if (estadoAlta)
-                {
-                    lblAccion.Text = "Agregar Nuevo Usuario";
-
-                }
-                else
-                {
-                    idUsuario = Convert.ToInt32(Request.QueryString["id"]);
-                    lblAccion.Text = "Editar Usuario " + idUsuario.ToString();
-                    CargarDatosUsuario(idUsuario);
-                }
-               
-            
             if (!IsPostBack)
             {
-               
                 cargarDiasCalendario();
                
             }
-            
+                     
         }
-        private bool PaginaEnEstadoEdicion()
+
+        protected void Page_InitComplete(object sender, EventArgs e)
+        {
+            estadoAlta = !PaginaEnEstadoEdicion();
+
+            if (estadoAlta)
+            {
+                lblAccion.Text = "Agregar Nuevo Usuario";
+
+            }
+            else
+            {
+                idUsuario = Convert.ToInt32(Request.QueryString["id"]);
+                lblAccion.Text = "Editar Usuario " + idUsuario.ToString();
+                CargarDatosUsuario(idUsuario);
+            }
+
+        }
+private bool PaginaEnEstadoEdicion()
         {
             if (Request.QueryString["id"] != null)
             {
@@ -61,47 +65,57 @@ namespace LabABM
         {
             // 1 - Obtener los datos del usuario en cuestión
             // 2 - Cargar en los controles de la tabla los datos del usuario obtenido
-            Usuario usuarioActual;
+            
             ManagerUsuarios manager = new ManagerUsuarios();
+            Usuario usuarioActual = new Usuario();
             usuarioActual = manager.GetUsuario(idUsuario);
             txtApellido.Text = usuarioActual.Apellido;
             txtNombre.Text = usuarioActual.Nombre;
-            rblTipoDocumento.SelectedValue = usuarioActual.TipoDoc.ToString();
+            rblTipoDocumento.SelectedIndex = usuarioActual.TipoDoc.Value -1;
             txtNroDocumento.Text = usuarioActual.NroDoc.ToString();
-            // ddlDiaFechaNacimiento.SelectedValue= usuarioActual.FechaNac.
+            //ddlDiaFechaNacimiento.SelectedValue= usuarioActual.FechaNac.
             //ddlMesFechaNacimiento.SelectedValue= usuarioActual.FechaNac.
             txtDirección.Text = usuarioActual.Direccion;
             txtTelefono.Text = usuarioActual.Telefono;
             txtEmail.Text = usuarioActual.Email;
             txtCelular.Text = usuarioActual.Celular;
             txtNombreUsuario.Text = usuarioActual.NombreUsuario;
-            txtClave.Text = usuarioActual.Clave;
-            txtConfirmarClave.Text = usuarioActual.Clave;
+           //txtClave.Text = usuarioActual.Clave;
+            //txtConfirmarClave.Text = usuarioActual.Clave;
         }
 
         protected void btnGuardar_Click(object sender, EventArgs e)
         {
             Usuario usr = new Usuario();
-            usr.Apellido = txtApellido.Text;
-            usr.Nombre = txtNombre.Text;
-            usr.Direccion = txtDirección.Text;
-            usr.Telefono = txtTelefono.Text;
-            usr.Email = txtEmail.Text;
-            usr.Celular = txtCelular.Text;
-            usr.NombreUsuario = txtNombreUsuario.Text;
-            usr.Clave = txtClave.Text;
-            usr.TipoDoc = rblTipoDocumento.SelectedIndex;
-            usr.NroDoc =  Convert.ToInt32(txtNroDocumento.Text);
-            usr.FechaNac = ddlDiaFechaNacimiento.SelectedItem + "/" + ddlMesFechaNacimiento.SelectedValue;
+            if (Page.IsPostBack)
+            {
+               
+                usr.Id = idUsuario;
+                usr.Apellido = txtApellido.Text;
+                usr.Nombre = txtNombre.Text;
+                usr.Direccion = txtDirección.Text;
+                usr.Telefono = txtTelefono.Text;
+                usr.Email = txtEmail.Text;
+                usr.Celular = txtCelular.Text;
+                usr.NombreUsuario = txtNombreUsuario.Text;
+                usr.Clave = txtClave.Text;
+                usr.TipoDoc = Int32.Parse(rblTipoDocumento.SelectedValue);
+                if (txtNroDocumento != null)
+                    usr.NroDoc = Int32.Parse(txtNroDocumento.Text);
+                usr.FechaNac = ddlDiaFechaNacimiento.SelectedItem.ToString() + "/" + ((ddlMesFechaNacimiento.SelectedIndex) +1).ToString() + "/" + txtAnioFechaNacimiento.Text; 
+            }
+           
             if (estadoAlta)
             {
                 ManagerUsuarios manager = new ManagerUsuarios();
                 manager.AgregarUsuario(usr);
+                grdUsuarios.DataBind();
             }
             else
             {
                 ManagerUsuarios manager = new ManagerUsuarios();
                 manager.ActualizarUsuario(usr);
+                grdUsuarios.DataBind();
             }
         }
 

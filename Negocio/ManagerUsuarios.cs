@@ -20,19 +20,7 @@ namespace Negocio
         {
             this.Conn = new SqlConnection(
              "Data Source=localhost;Initial Catalog=academia;Integrated Security=true;");
-            /*
-             * Este connection string es para conectarse con la base de datos academia en el servidor
-             * del departamento sistemas desde una PC de los laboratorios de sistemas,
-             * si realiza este Laboratorio desde su PC puede probar el siguiente connection string
-             * 
-             * "Data Source=localhost;Initial Catalog=academia;Integrated Security=true;"
-             * 
-             * Si realiza esta práctica sobre el MS SQL SERVER 2005 Express Edition entonce debe 
-             * utilizar el siguiente connection string
-             * 
-             * "Data Source=localhost\SQLEXPRESS;Initial Catalog=academia;Integrated Security=true;"
-             */
-
+            
         }
 
         public List<Usuario> GetAll()
@@ -101,27 +89,27 @@ namespace Negocio
 
         public void ActualizarUsuario(Usuario usuarioActual)
         {
-            //Creo el comando para ejecutar la sentencia SQL de DELETE, 
+            //Creo el comando para ejecutar la sentencia SQL de UPDATE, 
             //le asocio la Conexión también
-            SqlCommand cmdActualizarUsuario = new SqlCommand(" UPDATE usuarios " +
+                SqlCommand cmdActualizarUsuario = new SqlCommand(" UPDATE usuarios " +
                                                " SET tipo_doc = @tipo_doc, nro_doc = @nro_doc, fecha_nac = @fecha_nac, " +
                                                " apellido = @apellido, nombre = @nombre, direccion = @direccion, " +
                                                " telefono = @telefono, email = @email, celular = @celular, usuario = @usuario, " +
                                                " clave = @clave WHERE id=@id ", this.Conn);
 
             //Le agrego los parámetros necesarios
-            cmdActualizarUsuario.Parameters.Add(new SqlParameter("@tipo_doc", usuarioActual.TipoDoc.ToString()));
-            cmdActualizarUsuario.Parameters.Add(new SqlParameter("@nro_doc", usuarioActual.NroDoc.ToString()));
-            cmdActualizarUsuario.Parameters.Add(new SqlParameter("@fecha_nac", usuarioActual.FechaNac));
+            cmdActualizarUsuario.Parameters.Add(new SqlParameter("@tipo_doc", usuarioActual.TipoDoc));
+            cmdActualizarUsuario.Parameters.Add(new SqlParameter("@nro_doc", usuarioActual.NroDoc));
+            cmdActualizarUsuario.Parameters.Add(new SqlParameter("@fecha_nac", usuarioActual.FechaNac.ToString()));
             cmdActualizarUsuario.Parameters.Add(new SqlParameter("@apellido", usuarioActual.Apellido));
             cmdActualizarUsuario.Parameters.Add(new SqlParameter("@nombre", usuarioActual.Nombre));
             cmdActualizarUsuario.Parameters.Add(new SqlParameter("@direccion", usuarioActual.Direccion));
             cmdActualizarUsuario.Parameters.Add(new SqlParameter("@telefono", usuarioActual.Telefono));
-            cmdActualizarUsuario.Parameters.Add(new SqlParameter("@email", usuarioActual.Email));
+             cmdActualizarUsuario.Parameters.Add(new SqlParameter("@email", usuarioActual.Email));
             cmdActualizarUsuario.Parameters.Add(new SqlParameter("@celular", usuarioActual.Celular));
             cmdActualizarUsuario.Parameters.Add(new SqlParameter("@usuario", usuarioActual.NombreUsuario));
             cmdActualizarUsuario.Parameters.Add(new SqlParameter("@clave", usuarioActual.Clave));
-            cmdActualizarUsuario.Parameters.Add(new SqlParameter("@id", usuarioActual.Id.ToString()));
+            cmdActualizarUsuario.Parameters.Add(new SqlParameter("@id", usuarioActual.Id));
 
             //Abro la Conexión
             this.Conn.Open();
@@ -133,7 +121,7 @@ namespace Negocio
 
         public void AgregarUsuario(Usuario usuarioActual)
         {
-            //Creo el comando para ejecutar la sentencia SQL de DELETE, 
+            //Creo el comando para ejecutar la sentencia SQL de INSERT, 
             //le asocio la Conexión también
             SqlCommand cmdInsertarUsuario = new SqlCommand(" INSERT INTO usuarios(tipo_doc,nro_doc,fecha_nac,apellido, " +
                                                " nombre,direccion,telefono,email,celular,usuario,clave) " +
@@ -165,7 +153,7 @@ namespace Negocio
             //Basarse en el método GetAll pero obtener únicamente el usuario que viene
             //como párametro
 
-            Usuario usuarioActual = null;
+            Usuario usuarioActual = new Usuario();
 
             //Creo el comando para ejecutar la sentencia SQL, le asocio la Conexión también
             SqlCommand cmdGetUsuarios = new SqlCommand("SELECT * FROM usuarios WHERE id = @id", this.Conn);
@@ -178,7 +166,6 @@ namespace Negocio
             SqlDataReader rdrUsuarios = cmdGetUsuarios.ExecuteReader();
             if (rdrUsuarios.Read())
             {
-                usuarioActual = new Usuario();
                 usuarioActual.Id = idUsuario;
                 usuarioActual.TipoDoc = (Nullable<int>)rdrUsuarios["tipo_doc"];
                 usuarioActual.NroDoc = (Nullable<int>)rdrUsuarios["nro_doc"];
