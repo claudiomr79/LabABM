@@ -47,7 +47,7 @@ namespace Negocio
                 usuarioActual.Id = (int)rdrUsuarios["id"];
                 usuarioActual.TipoDoc = (Nullable<int>)rdrUsuarios["tipo_doc"];
                 usuarioActual.NroDoc = (Nullable<int>)rdrUsuarios["nro_doc"];
-                usuarioActual.FechaNac = rdrUsuarios["fecha_nac"].ToString();
+                usuarioActual.FechaDateTime = (DateTime) rdrUsuarios["fecha_nac"];
                 usuarioActual.Apellido = rdrUsuarios["apellido"].ToString();
                 usuarioActual.Nombre = rdrUsuarios["nombre"].ToString();
                 usuarioActual.Direccion = rdrUsuarios["direccion"].ToString();
@@ -100,7 +100,7 @@ namespace Negocio
             //Le agrego los parámetros necesarios
             cmdActualizarUsuario.Parameters.Add(new SqlParameter("@tipo_doc", usuarioActual.TipoDoc));
             cmdActualizarUsuario.Parameters.Add(new SqlParameter("@nro_doc", usuarioActual.NroDoc));
-            cmdActualizarUsuario.Parameters.Add(new SqlParameter("@fecha_nac", usuarioActual.FechaNac.ToString()));
+            cmdActualizarUsuario.Parameters.Add(new SqlParameter("@fecha_nac", usuarioActual.FechaDateTime));
             cmdActualizarUsuario.Parameters.Add(new SqlParameter("@apellido", usuarioActual.Apellido));
             cmdActualizarUsuario.Parameters.Add(new SqlParameter("@nombre", usuarioActual.Nombre));
             cmdActualizarUsuario.Parameters.Add(new SqlParameter("@direccion", usuarioActual.Direccion));
@@ -131,7 +131,7 @@ namespace Negocio
             //Le agrego los parámetros necesarios
             cmdInsertarUsuario.Parameters.Add(new SqlParameter("@tipo_doc", usuarioActual.TipoDoc.ToString()));
             cmdInsertarUsuario.Parameters.Add(new SqlParameter("@nro_doc", usuarioActual.NroDoc.ToString()));
-            cmdInsertarUsuario.Parameters.Add(new SqlParameter("@fecha_nac", usuarioActual.FechaNac));
+            cmdInsertarUsuario.Parameters.Add(new SqlParameter("@fecha_nac", usuarioActual.FechaDateTime));
             cmdInsertarUsuario.Parameters.Add(new SqlParameter("@apellido", usuarioActual.Apellido));
             cmdInsertarUsuario.Parameters.Add(new SqlParameter("@nombre", usuarioActual.Nombre));
             cmdInsertarUsuario.Parameters.Add(new SqlParameter("@direccion", usuarioActual.Direccion));
@@ -169,7 +169,7 @@ namespace Negocio
                 usuarioActual.Id = idUsuario;
                 usuarioActual.TipoDoc = (Nullable<int>)rdrUsuarios["tipo_doc"];
                 usuarioActual.NroDoc = (Nullable<int>)rdrUsuarios["nro_doc"];
-                usuarioActual.FechaNac = rdrUsuarios["fecha_nac"].ToString();
+                usuarioActual.FechaDateTime = (DateTime) rdrUsuarios["fecha_nac"];
                 usuarioActual.Apellido = rdrUsuarios["apellido"].ToString();
                 usuarioActual.Nombre = rdrUsuarios["nombre"].ToString();
                 usuarioActual.Direccion = rdrUsuarios["direccion"].ToString();

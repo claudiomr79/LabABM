@@ -68,20 +68,22 @@ private bool PaginaEnEstadoEdicion()
             
             ManagerUsuarios manager = new ManagerUsuarios();
             Usuario usuarioActual = new Usuario();
+            cargarDiasCalendario();
             usuarioActual = manager.GetUsuario(idUsuario);
             txtApellido.Text = usuarioActual.Apellido;
             txtNombre.Text = usuarioActual.Nombre;
-            rblTipoDocumento.SelectedIndex = usuarioActual.TipoDoc.Value -1;
+            rblTipoDocumento.SelectedIndex = (usuarioActual.TipoDoc.Value) -1;
             txtNroDocumento.Text = usuarioActual.NroDoc.ToString();
-            //ddlDiaFechaNacimiento.SelectedValue= usuarioActual.FechaNac.
-            //ddlMesFechaNacimiento.SelectedValue= usuarioActual.FechaNac.
+            ddlDiaFechaNacimiento.SelectedValue= usuarioActual.Dia.ToString();
+            ddlMesFechaNacimiento.SelectedValue = usuarioActual.Mes.ToString();
+            txtAnioFechaNacimiento.Text = usuarioActual.Anio.ToString();
             txtDirección.Text = usuarioActual.Direccion;
             txtTelefono.Text = usuarioActual.Telefono;
             txtEmail.Text = usuarioActual.Email;
             txtCelular.Text = usuarioActual.Celular;
             txtNombreUsuario.Text = usuarioActual.NombreUsuario;
-           //txtClave.Text = usuarioActual.Clave;
-            //txtConfirmarClave.Text = usuarioActual.Clave;
+            txtClave.Text = usuarioActual.Clave;
+            txtConfirmarClave.Text = usuarioActual.Clave;
         }
 
         protected void btnGuardar_Click(object sender, EventArgs e)
@@ -102,7 +104,8 @@ private bool PaginaEnEstadoEdicion()
                 usr.TipoDoc = Int32.Parse(rblTipoDocumento.SelectedValue);
                 if (txtNroDocumento != null)
                     usr.NroDoc = Int32.Parse(txtNroDocumento.Text);
-                usr.FechaNac = ddlDiaFechaNacimiento.SelectedItem.ToString() + "/" + ((ddlMesFechaNacimiento.SelectedIndex) +1).ToString() + "/" + txtAnioFechaNacimiento.Text; 
+               
+                usr.FechaDateTime = new DateTime(Convert.ToInt32(txtAnioFechaNacimiento.Text), Convert.ToInt32(ddlMesFechaNacimiento.SelectedValue), Convert.ToInt32(ddlDiaFechaNacimiento.SelectedItem.Value));
             }
            
             if (estadoAlta)

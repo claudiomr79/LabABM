@@ -10,7 +10,7 @@
 <body>
     <form id="form1" runat="server">
         <div>
-            <asp:GridView ID="grdUsuarios" runat="server" AutoGenerateColumns="False" DataSourceID="odsUsuarios" CellPadding="4" ForeColor="#333333" GridLines="None">
+            <asp:GridView ID="grdUsuarios" runat="server" AutoGenerateColumns="False" DataSourceID="odsUsuarios" CellPadding="4" ForeColor="#333333" GridLines="None" DataKeyNames="Id">
                 <AlternatingRowStyle BackColor="White" />
                 <Columns>
                     <asp:CommandField ShowDeleteButton="True" />
@@ -18,7 +18,7 @@
                     <asp:BoundField DataField="Apellido" HeaderText="Apellido" SortExpression="Apellido" />
                     <asp:BoundField DataField="Nombre" HeaderText="Nombre" SortExpression="Nombre" />
                     <asp:BoundField DataField="NombreUsuario" HeaderText="NombreUsuario" SortExpression="NombreUsuario" />
-                    <asp:BoundField DataField="FechaNac" HeaderText="FechaNac" SortExpression="FechaNac" />
+                    <asp:BoundField DataField="FechaDateTime" HeaderText="FechaNac" SortExpression="FechaDateTime" />
                     <asp:BoundField DataField="Email" HeaderText="Email" SortExpression="Email" />
                     <asp:HyperLinkField DataNavigateUrlFields="Id" DataNavigateUrlFormatString="ListaUsuarios.aspx?id={0}" Text="Editar" />
                 </Columns>
@@ -35,24 +35,26 @@
             </asp:GridView>
             <asp:ObjectDataSource ID="odsUsuarios" runat="server" DataObjectTypeName="Negocio.Usuario" DeleteMethod="BorrarUsuario" SelectMethod="GetAll" TypeName="Negocio.ManagerUsuarios"></asp:ObjectDataSource>
         </div>
-    
+    <br /><br />
     <table border="1">
             <tr>
                 <td align="center" colspan="2">
-                    <asp:Label ID="lblAccion" runat="server" Text="Label"></asp:Label></td>
+                    <asp:Label ID="lblAccion" runat="server" ForeColor="#66CCFF"></asp:Label></td>
             </tr>
             <tr>
                 <td style="width: 150px" align="right">
                     Apellido:</td>
                 <td>
-                    <asp:TextBox ID="txtApellido" runat="server"></asp:TextBox></td>
+                    <asp:TextBox ID="txtApellido" runat="server"></asp:TextBox>
+                    <asp:RequiredFieldValidator ID="rfvApellido" runat="server" ControlToValidate="txtApellido" ErrorMessage="Debe tener valor"></asp:RequiredFieldValidator>
+                </td>
             </tr>
             <tr>
                 <td style="width: 150px" align="right">
                     Nombre:</td>
                 
                 <td>
-                    &nbsp;<asp:TextBox ID="txtNombre" runat="server"></asp:TextBox></td>
+                    <asp:TextBox ID="txtNombre" runat="server"></asp:TextBox></td>
             </tr>
             <tr>
                 <td style="width: 150px" align="right">
@@ -79,18 +81,18 @@
                     <asp:DropDownList ID="ddlDiaFechaNacimiento" runat="server">
                          </asp:DropDownList>
                     <asp:DropDownList ID="ddlMesFechaNacimiento" runat="server">
-                        <asp:ListItem>Enero</asp:ListItem>
-                        <asp:ListItem>Febrero</asp:ListItem>
-                        <asp:ListItem>Marzo</asp:ListItem>
-                        <asp:ListItem>Abril</asp:ListItem>
-                        <asp:ListItem>Mayo</asp:ListItem>
-                        <asp:ListItem>Junio</asp:ListItem>
-                        <asp:ListItem>Julio</asp:ListItem>
-                        <asp:ListItem>Agosto</asp:ListItem>
-                        <asp:ListItem>Septiembre</asp:ListItem>
-                        <asp:ListItem>Octubre</asp:ListItem>
-                        <asp:ListItem>Noviembre</asp:ListItem>
-                        <asp:ListItem>Diciembre</asp:ListItem>
+                        <asp:ListItem Value="1">Enero</asp:ListItem>
+                        <asp:ListItem Value="2">Febrero</asp:ListItem>
+                        <asp:ListItem Value="3">Marzo</asp:ListItem>
+                        <asp:ListItem Value="4">Abril</asp:ListItem>
+                        <asp:ListItem Value="5">Mayo</asp:ListItem>
+                        <asp:ListItem Value="6">Junio</asp:ListItem>
+                        <asp:ListItem Value="7">Julio</asp:ListItem>
+                        <asp:ListItem Value="8">Agosto</asp:ListItem>
+                        <asp:ListItem Value="9">Septiembre</asp:ListItem>
+                        <asp:ListItem Value="10">Octubre</asp:ListItem>
+                        <asp:ListItem Value="11">Noviembre</asp:ListItem>
+                        <asp:ListItem Value="12">Diciembre</asp:ListItem>
                     </asp:DropDownList>
                     <asp:TextBox ID="txtAnioFechaNacimiento" runat="server" MaxLength="4" Width="50px"></asp:TextBox></td>
             </tr>

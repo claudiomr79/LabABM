@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Permissions;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -11,7 +12,6 @@ namespace Negocio
         private int _id;
         private Nullable<int> _tipoDoc;
         private Nullable<int> _nroDoc;
-        private string _fechaNac;
         private string _apellido;
         private string _nombre;
         private string _direccion;
@@ -20,6 +20,7 @@ namespace Negocio
         private string _celular;
         private string _usuario;
         private string _clave;
+        private DateTime _fechaDatetime;
 
 
         public int Id
@@ -37,11 +38,7 @@ namespace Negocio
             get { return _nroDoc; }
             set { _nroDoc = value; }
         }
-        public string FechaNac
-        {
-            get { return _fechaNac; }
-            set { _fechaNac = value; }
-        }
+        
         public string Apellido
         {
             get { return _apellido; }
@@ -82,6 +79,32 @@ namespace Negocio
             get { return _clave; }
             set { _clave = value; }
         }
+
+        public DateTime FechaDateTime
+        {
+            get { return _fechaDatetime; }
+            set { _fechaDatetime= value; }
+        }
+
+        public int Dia
+        {
+            get { return FechaDateTime.Day; }
+        }
+
+        public int Mes 
+        {
+            get { return FechaDateTime.Month; }
+        }
+
+        public int Anio
+        {
+            get { return FechaDateTime.Year; }
+        }
+
+        //public string FechaFormateada
+        //{
+        //    get { return FechaDateTime.ToString("dd/MM/yyyy"); }
+        //}
 
     }
 }
